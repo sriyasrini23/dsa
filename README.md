@@ -1,2 +1,2 @@
-# sorting
+# DSA
 Implementations for sorting algorithms
