@@ -5,6 +5,12 @@
 #include <vector>
 using namespace std;
 
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
 template <typename type = int> void printArray(vector<type>& arr, int n){
     for(int i=0; i<n; i++){
         cout << " " << arr[i];
