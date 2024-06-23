@@ -56,12 +56,41 @@ void mergeSort(vector<int>& arr, int l, int r){
 
 }
 
+void mergesort(vector<int>& arr, int l, int r){
+    if(l>=r) return;
+    
+    int m = (l+r)/2;
+
+    mergesort(arr,l, m);
+    mergesort(arr, m+1, r);
+
+    int ln = m-l+1;
+    vector<int> larr(ln, 0);
+    for(int i=0; i<ln; i++)
+        larr[i]=arr[l+i];
+    int rn = r-m;
+    vector<int> rarr(rn, 0);
+    for(int i=0; i< rn; i++)
+        rarr[i]=arr[m+1+i];
+
+    for(int i=0, j=0, k=l; i<ln || j<rn; k++){
+        if((i<ln && j<rn && larr[i]<=rarr[j])||(i<ln && j>=rn)){
+            arr[k] = larr[i];
+            i++;
+        }
+        else if((i<ln && j<rn && larr[i]>rarr[j])||(i>=ln && j<rn)){
+            arr[k] = rarr[j];
+            j++;
+        }
+    }
+}
+
 int main()
 {   
-    vector<int> arr({8, 9, 2, 3, 5, 7, 4, 5, 8, 1, 0});
+    vector<int> arr({6, 9, 2, 3, 5, 7, 4, 5, 8, 1, 0});
     int n = arr.size();
     printArray<int>(arr, n);
-    mergeSort(arr, 0, n-1);
+    mergesort(arr, 0, n-1);
     printArray<int>(arr, n);
     return 0;
 }
