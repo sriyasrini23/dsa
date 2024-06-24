@@ -55,7 +55,7 @@ void mergesort(vector<int>& arr, int l, int r){
         bool inlbound = i<ln;
         bool inrbound = j<rn;
         bool inbounds = inlbound && inrbound;
-        bool lessthan = larr[i]<=rarr[j];
+        bool lessthan = inbounds? larr[i]<=rarr[j]: false;
 
         if((inbounds && lessthan)||!inrbound){
             arr[k] = larr[i];
